@@ -66,7 +66,7 @@ npm install
 ```
 - Run
 ```sh
-nodemon start
+npm start
 ```
 ----
 ----

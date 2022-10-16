@@ -26,7 +26,7 @@ Set Ping Interval `Required` :-
 
 ![image](assets/pingInterval.png)
 
-    ***Note** : We recommend to not set the interval below 30 Seconds*
+    Note : We recommend to not set the interval below 30 Seconds
 
 Set Squadcast's Incident Webhook `Required` :- 
 Squadcast's Heartbeat Monitor supports Incident webhook to notify whenever a URL goes down.

@@ -1,0 +1,34 @@
+{
+  "name": "squadcast-heartbeat-monitor",
+  "version": "1.0.0",
+  "description": "This folder contains codebase for Squadcast's Heartbeat monitor",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \\\"Error: no test specified\\\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SquadcastHub/Squadcast-Heartbeat-Monitor.git"
+  },
+  "keywords": [
+    "heartbeat",
+    "squadcast"
+  ],
+  "author": "Akash Singh",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "form-data": "^4.0.0",
+    "nodemon": "^2.0.15",
+    "ping-monitor": "^0.6.2",
+    "time-convert": "^0.0.2",
+    "uuid": "^8.3.2",
+    "winston": "^3.3.3"
+  },
+  "bugs": {
+    "url": "https://github.com/SquadcastHub/Squadcast-Heartbeat-Monitor/issues"
+  },
+  "homepage": "https://github.com/SquadcastHub/Squadcast-Heartbeat-Monitor#readme"
+}

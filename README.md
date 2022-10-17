@@ -8,6 +8,7 @@ The repository supports :
 * User definable Ping intervals
 * User definable custom Request Payloads
 * Supports Squadcast's Incident Webhook for notifying when URLs are down
+* Supports Auto-Resolve
 
 
 ## Prerequisites

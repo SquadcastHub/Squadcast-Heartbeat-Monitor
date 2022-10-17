@@ -4,6 +4,9 @@ const axios = require("axios");
 // DEFINING ENVIRONMENT CONFIG
 require("dotenv").config();
 
+// UTILITIES
+const logger = require("./util/logger/loggerUtil");
+
 // IMPORTING JSON FILES
 const urlJson = require('../Squadcast-Heartbeat-Monitor/URL.json');
 const urldata = require('../Squadcast-Heartbeat-Monitor/DATA.json');
@@ -48,6 +51,10 @@ const checkHeartBeat = async () => {
                                 //HANDLE SUCCESS
                                 IncidentCreated[i] = "yes";
                             })
+                            .catch(async (err) => {
+                                //HANDLE INTERNAL SERVER ERROR
+                                logger.error("Internal Server Error - Cannot Reach Incident Webhook " + err);
+                            });
                     }}
                     else{
                         if( IncidentCreated[i] == "yes" ) {
@@ -75,6 +82,10 @@ const checkHeartBeat = async () => {
                             //HANDLE SUCCESS
                             IncidentCreated[i] = "yes";
                         })
+                        .catch(async (err) => {
+                            //HANDLE INTERNAL SERVER ERROR
+                            logger.error("Internal Server Error - Cannot Reach Incident Webhook " + err);
+                        });
                     }
                 });
         }
@@ -111,6 +122,10 @@ const checkHeartBeat = async () => {
                                 //HANDLE SUCCESS
                                 IncidentCreated[i] = "yes";
                             })
+                            .catch(async (err) => {
+                                //HANDLE INTERNAL SERVER ERROR
+                                logger.error("Internal Server Error - Cannot Reach Incident Webhook " + err);
+                            });
                     }}
                     else{
                         console.log("Yayy!!!!!!"+ (count++));
@@ -139,6 +154,10 @@ const checkHeartBeat = async () => {
                             //HANDLE SUCCESS
                             IncidentCreated[i] = "yes";
                         })
+                        .catch(async (err) => {
+                            //HANDLE INTERNAL SERVER ERROR
+                            logger.error("Internal Server Error - Cannot Reach Incident Webhook " + err);
+                        });
                     }
                 });
         }

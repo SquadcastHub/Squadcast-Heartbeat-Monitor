@@ -14,6 +14,7 @@ const urlKeys = Object.keys(urlJson);
 const urlValues = Object.values(urlJson);
 const urlData = Object.values(urldata);
 const IncidentCreated = Array(urlValues.length).fill('no');
+const IncidentResolved = Array(urlValues.length).fill('no');
 var count = 0;
 
 
@@ -50,6 +51,7 @@ const checkHeartBeat = async () => {
                             .then(async (resp) => {
                                 //HANDLE SUCCESS
                                 IncidentCreated[i] = "yes";
+                                IncidentResolved[i] = "no";
                             })
                             .catch(async (err) => {
                                 //HANDLE INTERNAL SERVER ERROR
@@ -57,9 +59,59 @@ const checkHeartBeat = async () => {
                             });
                     }}
                     else{
-                        if( IncidentCreated[i] == "yes" ) {
-                        IncidentCreated[i] = "no"
-                    }}
+                        console.log("Yayy!!!!!!"+ (count++));
+                        if( (IncidentCreated[i] == "no") && (IncidentResolved[i] == "no") ) {
+                            await axios({
+                                method: "post",
+                                url: process.env.INCIDENT_WEBHOOK,
+                                data : {
+                                        "message": "URL : "+urlValues[i]+" went down",
+                                        "description": "URL Name : "+urlKeys[i]+"\nURL : "+urlValues[i]+"\nWent Down At : "
+                                                +new Date().toUTCString()+"\n\nResponse Data : "+JSON.stringify(res.data),
+                                        "tags" : {
+                                        "status":res.status,
+                                        "source":"heartbeat"
+                                        },
+                                        "status": "resolve",
+                                        "event_id": i
+                                    }
+                                })
+                                .then(async (resp) => {
+                                    //HANDLE SUCCESS
+                                    IncidentResolved[i] = "yes";
+                                })
+                                .catch(async (err) => {
+                                    //HANDLE INTERNAL SERVER ERROR
+                                    logger.error("Internal Server Error - Cannot Reach Incident Webhook " + err);
+                                });
+                        }
+                        else if( (IncidentCreated[i] == "yes") && (IncidentResolved[i] == "no") ) {
+                        await axios({
+                            method: "post",
+                            url: process.env.INCIDENT_WEBHOOK,
+                            data : {
+                                    "message": "URL : "+urlValues[i]+" went down",
+                                    "description": "URL Name : "+urlKeys[i]+"\nURL : "+urlValues[i]+"\nWent Down At : "
+                                            +new Date().toUTCString()+"\n\nResponse Data : "+JSON.stringify(res.data),
+                                    "tags" : {
+                                    "status":res.status,
+                                    "source":"heartbeat"
+                                    },
+                                    "status": "resolve",
+                                    "event_id": i
+                                }
+                            })
+                            .then(async (resp) => {
+                                //HANDLE SUCCESS
+                                IncidentResolved[i] = "yes";
+                                IncidentCreated[i] = "no";
+
+                            })
+                            .catch(async (err) => {
+                                //HANDLE INTERNAL SERVER ERROR
+                                logger.error("Internal Server Error - Cannot Reach Incident Webhook " + err);
+                            });
+                        }}
                 })
                 .catch(async (err) => {
                     if( IncidentCreated[i] == "no" ) {
@@ -81,6 +133,7 @@ const checkHeartBeat = async () => {
                         .then(async (resp) => {
                             //HANDLE SUCCESS
                             IncidentCreated[i] = "yes";
+                            IncidentResolved[i] = "no";
                         })
                         .catch(async (err) => {
                             //HANDLE INTERNAL SERVER ERROR
@@ -129,9 +182,58 @@ const checkHeartBeat = async () => {
                     }}
                     else{
                         console.log("Yayy!!!!!!"+ (count++));
-                        if( IncidentCreated[i] == "yes" ) {
-                        IncidentCreated[i] = "no"
-                    }}
+                        if( (IncidentCreated[i] == "no") && (IncidentResolved[i] == "no") ) {
+                            await axios({
+                                method: "post",
+                                url: process.env.INCIDENT_WEBHOOK,
+                                data : {
+                                        "message": "URL : "+urlValues[i]+" went down",
+                                        "description": "URL Name : "+urlKeys[i]+"\nURL : "+urlValues[i]+"\nWent Down At : "
+                                                +new Date().toUTCString()+"\n\nResponse Data : "+JSON.stringify(res.data),
+                                        "tags" : {
+                                        "status":res.status,
+                                        "source":"heartbeat"
+                                        },
+                                        "status": "resolve",
+                                        "event_id": i
+                                    }
+                                })
+                                .then(async (resp) => {
+                                    //HANDLE SUCCESS
+                                    IncidentResolved[i] = "yes";
+                                })
+                                .catch(async (err) => {
+                                    //HANDLE INTERNAL SERVER ERROR
+                                    logger.error("Internal Server Error - Cannot Reach Incident Webhook " + err);
+                                });
+                        }
+                        else if( (IncidentCreated[i] == "yes") && (IncidentResolved[i] == "no") ) {
+                        await axios({
+                            method: "post",
+                            url: process.env.INCIDENT_WEBHOOK,
+                            data : {
+                                    "message": "URL : "+urlValues[i]+" went down",
+                                    "description": "URL Name : "+urlKeys[i]+"\nURL : "+urlValues[i]+"\nWent Down At : "
+                                            +new Date().toUTCString()+"\n\nResponse Data : "+JSON.stringify(res.data),
+                                    "tags" : {
+                                    "status":res.status,
+                                    "source":"heartbeat"
+                                    },
+                                    "status": "resolve",
+                                    "event_id": i
+                                }
+                            })
+                            .then(async (resp) => {
+                                //HANDLE SUCCESS
+                                IncidentResolved[i] = "yes";
+                                IncidentCreated[i] = "no";
+
+                            })
+                            .catch(async (err) => {
+                                //HANDLE INTERNAL SERVER ERROR
+                                logger.error("Internal Server Error - Cannot Reach Incident Webhook " + err);
+                            });
+                        }}
                 })
                 .catch(async (err) => {
                     if( IncidentCreated[i] == "no" ) {

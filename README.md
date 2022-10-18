@@ -1,5 +1,5 @@
 ![image](assets/SQ.svg)
-# Squadcast Webhook Connectors
+# Squadcast Heartbeat Monitor
 
 This repository contains the code for the Squadcast Heartbeat Monitor
 The repository supports : 
@@ -14,7 +14,6 @@ The repository supports :
 ## Prerequisites
 - git
 - NodeJs | npm
-- nodemon
 ### Tip : For Linux Users, just execute the command below to install all the NodeJS prerequisites
 ```
 bash dependencies.sh
@@ -67,7 +66,7 @@ npm install
 ```
 - Run
 ```sh
-npm start
+npm --max-old-space-size=4096 start
 ```
 ----
 ----

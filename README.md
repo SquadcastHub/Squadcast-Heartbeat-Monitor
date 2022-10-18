@@ -18,6 +18,8 @@ The repository supports :
 ```
 bash dependencies.sh
 ```
+---
+---
 
 ## Setting Up
 
@@ -27,6 +29,7 @@ Set Ping Interval `Required` :-
 ![image](assets/pingInterval.png)
 
     Note : We recommend to not set the interval below 30 Seconds
+----
 
 Set Squadcast's Incident Webhook `Required` :- 
 Squadcast's Heartbeat Monitor supports Incident webhook to notify whenever a URL goes down.
@@ -35,16 +38,22 @@ Squadcast's Heartbeat Monitor supports Incident webhook to notify whenever a URL
 ![image](assets/incidentWebhook.png)
 * Tip : To get you own Squadcast's Incident Webhook, follow this documentation : https://support.squadcast.com/integrations/incident-webhook-incident-webhook-api
 
+----
+
 Define URLs `Required` :- 
 Squadcast's Heartbeat Monitor supports Multiple URLs that you can monitor and can get notfied whenever they go down.
 * To set the URLs, navigate to `URL.json` and define the URLs just like shown below. Eg. :
 
 ![image](assets/urls.png)
 
+----
+
 Change HTTP Rquest Method :- 
 * To change the HTTP request method, navigate to .env file and set the method under the variable `DEFAULT_HTTP_METHOD`.
 
 ![image](assets/httpMethod.png)
+
+----
 
 Add POST Request Payloads :- 
 * To add the HTTP POST request payloads, navigate to `DATA.json` and define the payloads just like shown below. Eg. :
@@ -54,6 +63,8 @@ Add POST Request Payloads :-
 
 ![image](assets/httpMethod2.png)
 
+----
+----
 
 ## Getting Started
  - Clone this repo

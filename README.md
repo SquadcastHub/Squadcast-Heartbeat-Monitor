@@ -24,6 +24,7 @@ bash dependencies.sh
 ## Setting Up
 
 Set Ping Interval `Required` :- 
+
 * Ping interval for set inside .env file. Users can set Ping interval value & Time-Unit just like shown below. Eg. :
 
 ![image](assets/pingInterval.png)
@@ -32,6 +33,7 @@ Set Ping Interval `Required` :-
 ----
 
 Set Squadcast's Incident Webhook `Required` :- 
+
 Squadcast's Heartbeat Monitor supports Incident webhook to notify whenever a URL goes down.
 * Incident Webhook can be set inside .env file. Users can define the Incident Webhook just like shown below. Eg. :
 
@@ -41,6 +43,7 @@ Squadcast's Heartbeat Monitor supports Incident webhook to notify whenever a URL
 ----
 
 Define URLs `Required` :- 
+
 Squadcast's Heartbeat Monitor supports Multiple URLs that you can monitor and can get notfied whenever they go down.
 * To set the URLs, navigate to `URL.json` and define the URLs just like shown below. Eg. :
 
@@ -49,6 +52,7 @@ Squadcast's Heartbeat Monitor supports Multiple URLs that you can monitor and ca
 ----
 
 Change HTTP Rquest Method :- 
+
 * To change the HTTP request method, navigate to .env file and set the method under the variable `DEFAULT_HTTP_METHOD`.
 
 ![image](assets/httpMethod.png)
@@ -56,6 +60,7 @@ Change HTTP Rquest Method :-
 ----
 
 Add POST Request Payloads :- 
+
 * To add the HTTP POST request payloads, navigate to `DATA.json` and define the payloads just like shown below. Eg. :
 
 ![image](assets/data.png)
